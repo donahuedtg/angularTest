@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<style>
+			*{
+				box-sizing: border-box;
+			}
+			.link{
+				height:50px;
+			}
+			.link ul li{
+				display:inline-block;
+			}
+			
+			ul li{
+				list-style:none;
+				text-decoration:none;
+			}
+			a{
+				
+				text-decoration:none;
+			}			
+			.container.ng-enter{
+				
+				-moz-transition:0.5s linear all;
+				transition:0.5s linear all;
+				opacity:0;
+				
+			}
+			.container.ng-enter-active{
+				opacity:1;
+				
+			}
+			.list{
+				position:relative;
+				
+			}
+			
+			.list.ng-leave{
+				-moz-transition:0.5s linear all;		
+				transition:0.5s linear all;
+				opacity:1;			
+				left:0px;
+			
+			}
+			.list.ng-leave-active{
+				opacity:0;
+				left:-100px;
+			}
+			
+			.list.ng-enter{
+				-moz-transition:0.5s linear all;
+				transition:0.5s linear all;
+				opacity:0;			
+				left:-100px;
+			
+			}
+			.list.ng-enter-active{
+				opacity:1;
+				left:0;
+			}
+		
+		</style>
+	
+	
+	</head>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+<div ng-app="myApp" ng-controller="myCtrl">
+	<!--<div class="menu_div"></div>-->	
+	
+	<div class="first_div"><div>
+
+	<div class="link">
+		<ul>
+			<li><a  href="#/one">One</a></li>
+			<li><a  href="#/two">Two</a></li>
+			<li><a  href="#/four">Four</a></li>
+		</ul>
+	</div>
+	
+	<div ng-view></div>
+	
+	<form role="form">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Search here..." ng-model="searchStr">
+		</div>
+	</form>
+	<div class="container">
+		<ul class="list" ng-repeat="name in names | filter:searchStr" style="list-style:none">
+			<li><img src="{{name.url}}" alt="pic" style="width:50px; height:50px"/></li>
+			<li>First name is: {{name.fname}}</li>
+			<li>last name is: {{name.lname}}</li>
+			<li>Age is: {{name.age}}</li>
+		</ul>
+	</div>
+	<div class="shine1" ng-include="'test2.html'"></div>
+	
+	<p>Created by {{last}}</p>
+</div>
+
+
+
+<!--Scripts here for fast load-->
+	<script src="jquery.js"></script>
+	<script src="myJquery.js"></script>
+	<script src="myApp.js"></script>
+
+</body>
+</html> 
